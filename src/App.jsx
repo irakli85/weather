@@ -63,7 +63,7 @@ function App() {
         const weatherData = await weatherRes.json();
         setWeather(weatherData.daily);
       } catch (err) {
-        console.err(err);
+        console.error(err);
       } finally{
         setIsLoading(false)
       }
