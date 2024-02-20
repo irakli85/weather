@@ -34,13 +34,15 @@ function formatDay(dateStr) {
 
 
 function App() {
-  const [location, setLocation] = useState('')
+  const [location, setLocation] = useState(localStorage.getItem("location" || ""))
   const [isLoading, setIsLoading] = useState(false)
   const [displayLocation, setDisplayLocation] = useState('')
   const [weather, setWeather] = useState({})
 
   useEffect(() => {
-    async function fetchWeather () {
+    
+    async function fetchWeather () {      
+      if(location.length < 3) return      
       try {
         setIsLoading(true)
         // 1) Getting location (geocoding)
@@ -70,9 +72,10 @@ function App() {
     }
 
     fetchWeather()
-  }, [location])
-
-  
+    localStorage.setItem('location', location)
+    
+  }, [location])  
+ 
   return (    
      <div className="app">
         <h1>Classy Weather</h1>
