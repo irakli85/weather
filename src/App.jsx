@@ -42,7 +42,7 @@ function App() {
   useEffect(() => {
     
     async function fetchWeather () {      
-      if(location.length < 3) return      
+      if(location.length < 2) return setWeather({})     
       try {
         setIsLoading(true)
         // 1) Getting location (geocoding)
@@ -82,9 +82,10 @@ function App() {
         <div>
           <input type="text" placeholder="Search for location..." value={location} onChange={e => setLocation(e.target.value)}/>
         </div>
-        {/* {isLoading && <p className="loader">Loading...</p>} */}
         <p className="loader">{isLoading ? 'Loading...' : ''}</p>
-        {weather.weathercode && <Weather weather={weather} location={displayLocation}/>}
+        <div className="weather-box">
+          {weather.weathercode && <Weather weather={weather} location={displayLocation}/>}
+        </div>
      </div>    
   )
 }

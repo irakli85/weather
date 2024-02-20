@@ -59,10 +59,14 @@ input:focus {
   outline: 2px solid #222;
 }
 
-.weather {
+.weather {  
   list-style: none;
   display: flex;
   gap: 2.4rem;
+}
+
+.weather-box{
+  height: 25rem;
 }
 
 .day {
